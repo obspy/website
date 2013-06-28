@@ -1,0 +1,5 @@
+foundation_prototype/node_modules
+foundation_prototype/dist
+*.tmp*
+*.sass-cache*
+foundation_prototype/app/components

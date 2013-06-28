@@ -1,0 +1,550 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <title>ObsPy - A Python Framework for Seismology</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <link rel="shortcut icon" href="favicon.ico"/>
+    <link rel="stylesheet" href="styles/main.css">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css" rel="stylesheet">
+
+    <script src="components/jquery/jquery.min.js"></script>
+    <script src="scripts/foundation.min.js"></script>
+
+    <!--Load and start the highlightjs module-->
+    <link rel="stylesheet" href="components/highlightjs/styles/github.css" />
+    <script src="components/highlightjs/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <link rel="stylesheet" href="others/jquery-github/assets/base.css">
+    <script src="others/jquery-github/dist/jquery.github.min.js"></script>
+
+</head>
+<body ng-app="ObsPyApp">
+    <!--[if lt IE 7]>
+      <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+    <![endif]-->
+
+    <!--[if lt IE 9]>
+      <script src="components/es5-shim/es5-shim.js"></script>
+      <script src="components/json3/lib/json3.min.js"></script>
+    <![endif]-->
+
+    <!--Start of the top bar definition-->
+    <div class="fixed">
+        <nav class="top-bar" ng-controller="TopBarController">
+            <ul class="title-area">
+                <li class="name">
+                    <h1><a href="#"><img alt="ObsPy Logo" src="resources/obspy_logo_only_waveform_small_white.png"> ObsPy</a></h1>
+                </li>
+                <li class="toggle-topbar menu-icon"><a href="#"><span>menu</span></a></li>
+            </ul>
+            <section class="top-bar-section">
+                <ul class="right">
+                    <li><a class="icon-frown" href="https://github.com/obspy/obspy/issues/new"> File a bug</a></li>
+                    <li class="divider"></li>
+                    <li><a class="icon-code" href="https://github.com/obspy/obspy/blob/master/CONTRIBUTING.md"> Contribute</a></li>
+                    <li class="divider"></li>
+                    <li class="has-dropdown"><a class="icon-envelope-alt" href="#"> Mailinglist</a>
+                    <ul class="dropdown">
+                        <li><label>obspy-users mailing list</label></li>
+                        <li><a class="icon-user" href="http://lists.swapbytes.de/mailman/listinfo/obspy-users"> Subscribe</a></li>
+                        <li><a class="icon-folder-close" href="http://lists.swapbytes.de/archives/obspy-users"> Archives</a></li>
+                        <li><a class="icon-envelope-alt" href="mailto:users@obspy.org"> Post a message</a></li>
+                        <li><label>obspy-devs mailing list</label></li>
+                        <li><a class = "icon-envelope-alt" href="mailto:devs@obspy.org"> Post a message</a></li>
+                    </ul>
+                    </li>
+                    <li class="divider"></li>
+                    <li class="has-dropdown"><a href="#">Documentation</a>
+                    <ul class="dropdown">
+                        <li><label>Getting Started</label></li>
+                        <li><a href="#">Tutorial</a></li>
+                        <li><a href="#">Gallery</a></li>
+                        <li class="divider"></li>
+                        <li><label>API Documentation (stable)</label></li>
+                        <li class="has-dropdown"><a href="#" class="">General Packages</a>
+                        <ul class="dropdown">
+                            <li><a href="#">obspy.core</a></li>
+                            <li><a href="#">obspy.imaging</a></li>
+                            <li><a href="#">obspy.realtime</a></li>
+                            <li><a href="#">obspy.signal</a></li>
+                            <li><a href="#">obspy.xseed</a></li>
+                        </ul>
+                        </li>
+                        <li class="has-dropdown"><a href="#" class="">Waveform Import/Export</a>
+                        <ul class="dropdown">
+                            <li><a href="#">obspy.css</a></li>
+                            <li><a href="#">obspy.datamark</a></li>
+                            <li><a href="#">obspy.gse2</a></li>
+                            <li><a href="#">obspy.mseed</a></li>
+                            <li><a href="#">obspy.sac</a></li>
+                            <li><a href="#">obspy.seisan</a></li>
+                            <li><a href="#">obspy.seg2</a></li>
+                            <li><a href="#">obspy.segy</a></li>
+                            <li><a href="#">obspy.sh</a></li>
+                            <li><a href="#">obspy.wav</a></li>
+                        </ul>
+                        </li>
+                        <li class="has-dropdown"><a href="#" class="">Database and Web Clients</a>
+                        <ul class="dropdown">
+                            <li><a href="#">obspy.arclink</a></li>
+                            <li><a href="#">obspy.earthworm</a></li>
+                            <li><a href="#">obspy.iris</a></li>
+                            <li><a href="#">obspy.neries</a></li>
+                            <li><a href="#">obspy.seishub</a></li>
+                        </ul>
+                        </li>
+                        <li class="divider"></li>
+                        <li><label>API Documentation (current master)</label></li>
+                        <li class="has-dropdown"><a href="#" class="">General Packages</a>
+                        <ul class="dropdown">
+                            <li><a href="#">obspy.core</a></li>
+                            <li><a href="#">obspy.imaging</a></li>
+                            <li><a href="#">obspy.realtime</a></li>
+                            <li><a href="#">obspy.signal</a></li>
+                            <li><a href="#">obspy.xseed</a></li>
+                        </ul>
+                        </li>
+                        <li class="has-dropdown"><a href="#" class="">Waveform Import/Export</a>
+                        <ul class="dropdown">
+                            <li><a href="#">obspy.css</a></li>
+                            <li><a href="#">obspy.datamark</a></li>
+                            <li><a href="#">obspy.gse2</a></li>
+                            <li><a href="#">obspy.mseed</a></li>
+                            <li><a href="#">obspy.sac</a></li>
+                            <li><a href="#">obspy.seisan</a></li>
+                            <li><a href="#">obspy.seg2</a></li>
+                            <li><a href="#">obspy.segy</a></li>
+                            <li><a href="#">obspy.sh</a></li>
+                            <li><a href="#">obspy.wav</a></li>
+                        </ul>
+                        </li>
+                        <li class="has-dropdown"><a href="#" class="">Database and Web Clients</a>
+                        <ul class="dropdown">
+                            <li><a href="#">obspy.arclink</a></li>
+                            <li><a href="#">obspy.earthworm</a></li>
+                            <li><a href="#">obspy.iris</a></li>
+                            <li><a href="#">obspy.neries</a></li>
+                            <li><a href="#">obspy.seishub</a></li>
+                        </ul>
+                        </li>
+                    </ul>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                    <form class="search" action="http://docs.obspy.org/search.html" method="get">
+                        <input type="text" style="font-size: 75%" name="q" placeholder="Search Docs" />
+                    </form>
+                    </li>
+                    <li class="divider"></li>
+                    <li class="has-button">
+                    <a class="small button" href="#" data-reveal-id="downloadModal">Download</a>
+                    </li>
+                </ul>
+            </section>
+        </nav>
+    </div>
+    <!--End of the top bar definition-->
+
+
+
+
+    <!--Start of left-sidebar definition.-->
+    <div style="padding-top: 20px; position: fixed" class="hide-for-small">
+        <div class="small-12 large-10 columns">
+
+            <div class="row">
+                <div id="navigation_container" class="section-container vertical-nav" data-section data-options="one_up: true">
+                    <section data-magellan-arrival="empty" class="hide">
+                        <p class="title" data-section-title><a href="#features">Features</a></p>
+                    </section>
+                    <section data-magellan-arrival="features">
+                        <p class="title" data-section-title><a href="#features">Features</a></p>
+                    </section>
+                    <section data-magellan-arrival="examples">
+                        <p class="title" data-section-title><a href="#examples">Examples</a></p>
+                    </section>
+                    <section data-magellan-arrival="installation">
+                        <p class="title" data-section-title><a href="#installation">Installation</a></p>
+                    </section>
+                    <section data-magellan-arrival="getting_started">
+                        <p class="title" data-section-title><a href="#getting_started">Getting Started</a></p>
+                    </section>
+                    <section data-magellan-arrival="use_cases">
+                        <p class="title" data-section-title><a href="#use_cases">Use Cases</a></p>
+                    </section>
+                    <section data-magellan-arrival="devs_corner">
+                        <p class="title" data-section-title><a href="#devs_corner">Developers Corner</a></p>
+                    </section>
+                </div>
+            </div>
+
+            <div class="row">
+                <h5>News</h5><hr>
+                <div class="panel">
+                    <h6><a href="#">ObsPy 0.9.0</a></h6>
+                    <p class="subheader">
+                        Many new features!
+                    </p>
+                </div>
+                <div class="panel hide-for-small">
+                    <h5><a href="#">New Test Reporter Page</a></h5>
+                </div>
+                <div class="panel hide-for-small">
+                    <h5><a href="#">New Website</a></h5>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End of left-sidebar definition -->
+
+
+    <div class="large-2 columns">
+        <div class="row">
+          &nbsp;
+        </div>
+    </div>
+
+    <div style="padding-top: 10px" class="large-9 columns">
+        <div class="row">
+            <div class="large-12 columns">
+
+                <img src="resources/obspy_logo_full_524x150px.png">
+                <a name="empty" data-magellan-destination="empty"></a>
+                <p>ObsPy is a community-driven, open-source project dedicated to provide
+                a Python framework for processing seismological data. It provides
+                parsers for common file formats, clients to access data centers and
+                seismological signal processing routines which allow the manipulation
+                of seismological time series (see Beyreuther et al. 2010, Megies et al.
+                2011).</p>
+                <p>The goal of the ObsPy project is to facilitate rapid
+                application and workflow development for seismology.</p>
+            </div>
+        </div>
+
+        <!--<dl id="magellanTopNav" class="sub-nav" data-magellan-expedition="fixed">-->
+            <!--<dd data-magellan-arrival="features"><a href="#features">Features</a></dd>-->
+            <!--<dd data-magellan-arrival="examples"><a href="#examples">Examples</a></dd>-->
+            <!--<dd data-magellan-arrival="installation"><a href="#installation">Installation</a></dd>-->
+            <!--<dd data-magellan-arrival="getting_started"><a href="#getting_started">Getting Started</a></dd>-->
+            <!--<dd data-magellan-arrival="use_cases"><a href="#use_cases">Use Cases</a></dd>-->
+            <!--<dd data-magellan-arrival="devs_corner"><a href="#devs_corner">Developers Corner</a></dd>-->
+        <!--</dl>-->
+
+        <div class="row">
+            <div class="large-12 columns">
+                <a name="features" data-magellan-destination="features"></a>
+                <h2>Features</h2>
+            </div>
+            <div class="large-8 columns">
+                <h5>Read and Write Various Waveform Formats</h5>
+                <div class="row">
+                    <div class="large-6 columns">
+                        <p>ObsPy enables you to painlessly read and write all commonly used
+                        waveform data formats with a unified interface. It automatically
+                        detects a file's format meaning that you never need to worry about
+                        the format of your data again. Simply combine data from
+                        heterogeneous sources and get straight to work.</p>
+                    </div>
+                    <div class="large-6 columns">
+                        <p>We currently support importing waveform data in MiniSEED, SAC,
+                        SEGY, GSE2, GSE1, DATAMARK, CSS, SEISAN, SEG2, SEED, WAV, and the
+                        SeismicHandler formats. Most formats can also be exported again. The
+                        employed plug-in architecture even enables you to add support for
+                        your own custom formats.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="large-4 columns">
+                <img src="resources/waveform_iconic.png">
+            </div>
+            <hr>
+        </div>
+
+        <div class="row">
+            <div class="large-4 columns">
+                <img src="http://placehold.it/400x200&text=[img]">
+            </div>
+            <div class="large-8 columns">
+                <h5>Webservice and Database Access Clients</h5>
+                <div class="row">
+                    <div class="large-6 columns">
+                        <p>ObsPy offers clients for accessing data from the
+                        biggest and most often used datacenters. No matter the
+                        origin of the data, the processing within ObsPy does
+                        not differ, enabling the easy creation of workflows
+                        combining heterogeneous data sets.</p>
+                    </div>
+                    <div class="large-6 columns">
+                        <p>It currently supports data retrieval from IRIS,
+                        Orfeus, NERIES, and NEIC datacenters and the Earthworm
+                        and SeisHub databases. All clients support waveform and
+                        oftentimes also station and event metadata
+                        downloading, depending on the backend.</p>
+                    </div>
+                </div>
+            </div>
+            <hr>
+        </div>
+
+        <div class="row">
+            <div class="large-8 columns">
+                <h5>Comprehensive Signal Processing Library</h5>
+                <div class="row">
+                    <div class="large-6 columns">
+                        <p>ObsPy contains a fairly comprehensive seismological signal processing library. It aims to offer all commonly used and agreed upon processing functionality.</p>
+                    </div>
+                    <div class="large-6 columns">
+                        <p>It contains various filtering, triggering, rotation,
+                        array analysis, instrument correction and simulation,
+                        time frequency and many more routines with and
+                        intuitive interface.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="large-4 columns">
+                <img src="http://placehold.it/400x200&text=[img]">
+            </div>
+            <hr>
+        </div>
+
+        <div class="row">
+            <div class="large-4 columns">
+                <img src="http://placehold.it/400x200&text=[img]">
+            </div>
+            <div class="large-8 columns">
+                <h5>Event and Station Metadata support</h5>
+                <div class="row">
+                    <div class="large-6 columns">
+                        <p>ObsPy enables you to painlessly read and write all commonly used
+                        waveform data formats with a unified interface. It automatically</p>
+                    </div>
+                    <div class="large-6 columns">
+                        <p>We currently support importing waveform data in MiniSEED, SAC,
+                        SeismicHandler formats. Most formats can also be exported again. The</p>
+                    </div>
+                </div>
+            </div>
+            <hr>
+        </div>
+
+
+        <div class="row">
+            <div class="large-8 columns">
+                <h5>Why Python?</h5>
+                <div class="row">
+                    <div class="large-6 columns">
+                        <p>ObsPy enables you to painlessly read and write all commonly used
+                        waveform data formats with a unified interface. It automatically</p>
+                    </div>
+                    <div class="large-6 columns">
+                        <p>We currently support importing waveform data in MiniSEED, SAC,
+                        SeismicHandler formats. Most formats can also be exported again. The</p>
+                    </div>
+                </div>
+            </div>
+            <div class="large-4 columns">
+                <img src="http://placehold.it/400x200&text=[img]">
+            </div>
+        </div>
+
+
+
+        <div class="row">
+            <hr>
+            <a name="examples" data-magellan-destination="examples"></a>
+            <h2>Examples</h2>
+            <div class="large-12 columns">
+                <!-- Basic orbit markup -->
+                <ul data-orbit>
+
+                    <li>
+                    <pre><code class="python code-orbit">
+    >>> import obspy
+    >>> st = obspy.read("BW.FURT..EH.D.2010.005")
+    >>> print st
+    3 Trace(s) in Stream:
+    BW.FURT..EHE | 2010-01-05T00:00:00 - 2010-01-06T00:00:00 | 200.0 Hz, 17280068 samples
+    BW.FURT..EHN | 2010-01-05T00:00:00 - 2010-01-06T00:00:00 | 200.0 Hz, 17280068 samples
+    BW.FURT..EHZ | 2010-01-05T00:00:00 - 2010-01-06T00:00:00 | 200.0 Hz, 17280068 samples
+    >>> st.filter("lowpass", freq=1.0)
+    >>> st.write("BW.FURT..EH.D.2010.005", format="sac")
+
+                    </code></pre>
+                    <div class="orbit-caption">Effortlessly read and write various waveform file formats</div>
+                    </li>
+
+                    <li>
+                    <pre><code class="python code-orbit">
+>>> from obspy.core import read
+>>> st = read('http://examples.obspy.org/RJOB_061005_072159.ehz.new')
+>>> print st
+1 Trace(s) in Stream:
+BW.RJOB..Z | 2005-10-06T07:21:59.849998Z - 2005-10-06T07:24:59.844998Z | 200.0 Hz, 36000 samples
+>>> len(st)
+1
+>>> tr = st[0]  # assign first and only trace to new variable
+>>> print tr
+BW.RJOB..Z | 2005-10-06T07:21:59.849998Z - 2005-10-06T07:24:59.844998Z | 200.0 Hz, 36000 samples
+                    </code></pre>
+                    <div class="orbit-caption">...</div>
+                    </li>
+
+                    <li>
+                    <pre><code class="python code-orbit">
+>>> from obspy.core import read
+>>> st = read('http://examples.obspy.org/RJOB_061005_072159.ehz.new')
+>>> print st
+1 Trace(s) in Stream:
+BW.RJOB..Z | 2005-10-06T07:21:59.849998Z - 2005-10-06T07:24:59.844998Z | 200.0 Hz, 36000 samples
+>>> len(st)
+1
+>>> tr = st[0]  # assign first and only trace to new variable
+>>> print tr
+BW.RJOB..Z | 2005-10-06T07:21:59.849998Z - 2005-10-06T07:24:59.844998Z | 200.0 Hz, 36000 samples
+                    </code></pre>
+                    <div class="orbit-caption">...</div>
+                    </li>
+
+
+
+
+                </ul>
+
+
+                <div class="large-12 columns">
+                    <a name="installation" data-magellan-destination="installation"></a>
+                    <hr>
+                    <h2>Installation</h2>
+                </div>
+
+                <div class="large-12 columns">
+                    <a name="getting_started" data-magellan-destination="getting_started"></a>
+                    <hr>
+                    <h2>Getting Started</h2>
+                    The ObsPy Gallery and its related ObsPy Tutorial are maybe the best
+                    point to get a first impression of what ObsPy is all about. The
+                    tutorial is a collection of short example programs with explanations
+                    and program output. For help getting started with Python, have a look
+                    at this collection of links to Tutorials.
+                </div>
+
+                <div class="large-12 columns">
+                    <a name="use_cases" data-magellan-destination="use_cases"></a>
+                    <hr>
+                    <h2>Use Cases</h2>
+                </div>
+
+                <!-- End Content -->
+
+                <!--[![Build Status](https://secure.travis-ci.org/obspy/obspy.png?branch=master)](https://travis-ci.org/obspy/obspy)-->
+                <!--[![PEP8 Status](https://www.seismic-handler.org/obspy/pep8.png)](http://pep8.obspy.org)-->
+                <!--[![Coverage Status](https://coveralls.io/repos/obspy/obspy/badge.png?branch=master)](https://coveralls.io/r/obspy/obspy?branch=master)-->
+                <!--[![PyPI Version](https://pypip.in/v/obspy/badge.png)](https://crate.io/packages/obspy/)-->
+                <!--[![Downloads](https://pypip.in/d/obspy/badge.png)](https://crate.io/packages/obspy/)-->
+
+                <div class="large-12 columns">
+                    <a name="devs_corner" data-magellan-destination="devs_corner"></a>
+                    <hr>
+                    <h2>Developers Corner</h2>
+                    <div class="large-6 columns" data-repo="obspy/obspy"></div>
+                </div>
+
+
+                <!-- Footer -->
+
+                <footer class="row">
+                    <div class="large-12 columns"><hr>
+                        <div class="row">
+
+                            <div class="large-6 columns">
+                                <p>&copy; Copyright The ObsPy Development Team, 2013
+                            </div>
+
+                            <div class="large-6 small-12 columns">
+                                <img src="resources/lgplv3-88x31.png">
+                                <img src="./resources/python-powered-w-100x40.png">
+                                <ul class="inline-list right">
+                                    <li><a href="#">Impressum</a></li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+                </footer>
+
+            </div>
+        </div>
+
+        <!-- End Footer -->
+
+    </div>
+
+
+
+
+
+    <div id="downloadModal" class="reveal-modal">
+        <h2>Install ObsPy</h2>
+        <p class="lead">Choose the version for your system or install from source</p>
+        <a class="close-reveal-modal">&#215;</a>
+
+        <div class="row">
+            <div class="large-3 columns">
+                <img src="./resources/pictonic/imgs/black/128/os-win-04.png">
+            </div>
+            <div class="large-3 columns">
+                <img src="./resources/pictonic/imgs/black/128/os-apple.png">
+            </div>
+            <div class="large-3 columns">
+                <img src="./resources/pictonic/imgs/black/128/os-linux_1_.png">
+            </div>
+            <div class="large-3 columns">
+                <img src="./resources/pictonic/imgs/black/128/prog-python.png">
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <script src="components/angular/angular.js"></script>
+    <script src="components/angular-resource/angular-resource.js"></script>
+
+    <!-- build:js scripts/scripts.js -->
+    <script src="scripts/app.js"></script>
+    <!--<script src="scripts/controllers/main.js"></script>-->
+
+
+    <script>
+        $(document).foundation();
+        $("[data-repo]").github();
+
+        <!--Hack to make magellan behave like the scrollspy from Bootstrap.-->
+        $(document).on('arrival.fndtn.magellan', '[data-magellan-arrival]', function (e) {
+          $("#navigation_container")
+              .find('[data-magellan-arrival]')
+              .not($(this))
+              .removeClass("active");
+  });
+
+
+
+
+
+
+
+    </script>
+
+
+
+    <!-- endbuild -->
+</body>
+</html>
